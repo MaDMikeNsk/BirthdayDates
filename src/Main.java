@@ -20,7 +20,8 @@ public class Main {
         BIRTHDAY_FORMAT.setLenient(true);
     }
 
-    private static boolean isValid(String date){  //Проверка вводимой даты на допустимость (например: 31 февраля)
+    //Проверка вводимой даты на допустимость (например: 31 февраля)
+    private static boolean isValid(String date){
         try {
             return BIRTHDAY_FORMAT.format(BIRTHDAY_FORMAT.parse(date)).equals(date);
         }catch (ParseException ex){
@@ -32,9 +33,9 @@ public class Main {
         Calendar rightNow = Calendar.getInstance();
         Calendar birthDay = Calendar.getInstance();
         DateFormat birthdayFormat = new SimpleDateFormat("dd.MM.yyy");
-        DateFormat dayName = new SimpleDateFormat("E");
+        DateFormat dayName = new SimpleDateFormat("E", Locale.ENGLISH);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String inputDate = "";
+        String inputDate;
 
         do {
             System.out.println("Введите дату рождения в формате дд.мм.гггг: ");
@@ -43,9 +44,8 @@ public class Main {
 
         String [] parsedDate = inputDate.split("\\.");
         int birthdayDay = Integer.parseInt(parsedDate[0]);
-        int birthMonth = Integer.parseInt(parsedDate[1])-1;
+        int birthMonth = Integer.parseInt(parsedDate[1])-1; //Месяцы считаются от 0
         int birthYear= Integer.parseInt(parsedDate[2]);
-        Locale.setDefault(Locale.ENGLISH);
         birthDay.set(birthYear,birthMonth,birthdayDay);
 
         int i=0;
