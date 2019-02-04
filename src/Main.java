@@ -35,14 +35,14 @@ public class Main {
         DateFormat birthdayFormat = new SimpleDateFormat("dd.MM.yyy");
         DateFormat dayName = new SimpleDateFormat("E", Locale.ENGLISH);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String inputDate;
 
+        String inputDate;
         do {
             System.out.println("Введите дату рождения в формате дд.мм.гггг: ");
             inputDate = reader.readLine();
         } while (!isValid(inputDate));
 
-        String [] parsedDate = inputDate.split("\\.");
+        String[] parsedDate = inputDate.split("\\.");
         int birthdayDay = Integer.parseInt(parsedDate[0]);
         int birthMonth = Integer.parseInt(parsedDate[1])-1; //Месяцы считаются от 0
         int birthYear= Integer.parseInt(parsedDate[2]);
